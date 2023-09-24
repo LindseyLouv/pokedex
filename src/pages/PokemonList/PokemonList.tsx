@@ -14,7 +14,7 @@ function PokemonList() {
   }
 
   function handlePrintData() {
-    console.log(pokemonList);
+    console.log(pokemonList[1]);
   }
 
   return (

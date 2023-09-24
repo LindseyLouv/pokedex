@@ -1,12 +1,15 @@
 import { Typography, Container } from '@mui/material';
+import ResponsiveAppBar from './ResponsiveAppBar';
+
 
 function Header() {
 
   return (
     <Container component="header">
-      <Typography>Header</Typography>
+      <ResponsiveAppBar></ResponsiveAppBar>
     </Container>
   );
 }
 
 export default Header;
+
