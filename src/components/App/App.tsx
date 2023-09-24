@@ -1,6 +1,5 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Container, CssBaseline } from '@mui/material';
+import { Container } from '@mui/material';
 
 import './App.css';
 import Home from '../../pages/Home/Home';
