@@ -1,12 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers/rootReducer';
+import pokemonMiddleware from '../middlewares/pokemonMiddleware';
 
-const middleware = [thunkMiddleware];
 
 const store = createStore(
-  combineReducers(rootReducer),
-  applyMiddleware(...middleware)
+  rootReducer,
+  applyMiddleware(pokemonMiddleware)
 );
 
 export default store;
