@@ -5,7 +5,7 @@ function Home() {
 
   return (
     <Container component="main">
-      <Typography>Home</Typography>
+      <Typography>Welcome to my Pokédex project</Typography>
     </Container>
   );
 }

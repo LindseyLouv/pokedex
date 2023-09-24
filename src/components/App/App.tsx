@@ -15,7 +15,7 @@ import { getPokemonList } from "../../redux/actions/pokemonActions";
 function App() {
   const dispatch = useDispatch();
 
-  // triggers when the website first load to get categories for modal
+  // triggers when the website first load to get pokemon list
   useEffect(() => {
     dispatch(getPokemonList());
     console.log("get data");
@@ -27,7 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />   
         <Route path="/pokemonlist" element={<PokemonList />} />         
-        <Route path="/pokemon" element={<Pokemon />} />   
+        <Route path="/pokemon/:number" element={<Pokemon />} />   
       </Routes>
       <Footer />
     </Container>
