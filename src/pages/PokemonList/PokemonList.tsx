@@ -1,17 +1,11 @@
 import { Typography, Container, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { getPokemonList } from "../../redux/actions/pokemonActions";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/rootReducer';
+import { Pokemon } from '../../utils/types'
 
 function PokemonList() {
-  const dispatch = useDispatch();
   const pokemonList = useSelector((state: RootState) => state.pokemon.pokemonList);
-
-  function handleGetData() {
-    dispatch(getPokemonList());
-    console.log("get data");
-  }
 
   function handlePrintData() {
     console.log(pokemonList[1]);
@@ -20,9 +14,10 @@ function PokemonList() {
   return (
     <Container component="main">
     <Typography>Pokemon List</Typography>
-    <Button onClick={handleGetData} variant="contained">
-      Get Pokémon data
-    </Button>
+          {/* Map through the pokemonList and display Typography for each Pokemon */}
+          {pokemonList.map((pokemon: Pokemon) => (
+        <Typography key={pokemon.number}>{pokemon.name}</Typography>
+      ))}
     <Button onClick={handlePrintData} variant="contained">
       Print Pokémon data
     </Button>
