@@ -31,11 +31,6 @@ function PokemonList() {
         To Pokemon
       </Link>
     </Button>
-    <Button variant="contained">
-      <Link to="/">
-        Back to Home
-      </Link>
-    </Button>
   </Container>
   );
 }
