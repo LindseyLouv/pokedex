@@ -5,8 +5,8 @@ import {
   GET_POKEMON,
   savePokemon,
 } from "../actions/pokemonActions";
-import { Dispatch, Middleware } from "redux";
-import RootReducer, { RootState } from "../reducers/rootReducer"; // Import the root state type
+import { Middleware } from "redux";
+import { RootState } from "../reducers/rootReducer";
 
 const pokemonMiddleware: Middleware<{}, RootState> =
   (store) => (next) => (action) => {

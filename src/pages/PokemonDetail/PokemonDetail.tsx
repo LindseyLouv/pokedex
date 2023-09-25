@@ -37,12 +37,12 @@ function PokemonDetail() {
           <Typography>{`Weight : ${
             pokemon ? pokemon?.weight / 10 : ""
           } kg`}</Typography>
-          {pokemon?.type.length == 1 && (
+          {pokemon?.type.length === 1 && (
             <Typography>{`Type : ${capitalizeFirstLetter(
               pokemon?.type[0]
             )}`}</Typography>
           )}{" "}
-          {pokemon?.type.length == 2 && (
+          {pokemon?.type.length === 2 && (
             <Typography>{`Type : ${capitalizeFirstLetter(
               pokemon?.type[0]
             )} & ${capitalizeFirstLetter(pokemon?.type[1])}`}</Typography>
