@@ -10,10 +10,10 @@ function PokemonList() {
   );
 
   return (
-    <Container component="main">
+    <Container component="main" sx={{ paddingBottom: "2rem" }}>
       <Typography
-        component="h2"
-        variant="h2"
+        component="h4"
+        variant="h4"
         sx={{
           color: (theme) => theme.palette.primary.main,
           padding: "1rem",

@@ -1,28 +1,69 @@
-import { Typography, Container, Button, CardMedia } from "@mui/material";
+import { Typography, Container, Button, CardMedia, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducer";
-import { Pokemon } from "../../utils/types";
+import { PokemonInfos } from "../../utils/types";
 import { capitalizeFirstLetter } from "../../utils/functions";
+import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 
 function PokemonDetail() {
-  const pokemon: Pokemon | null = useSelector<RootState, Pokemon | null>(
-    (state) => state.pokemon.currentPokemon
-  );
+  const pokemon: PokemonInfos | null = useSelector<
+    RootState,
+    PokemonInfos | null
+  >((state) => state.pokemon.currentPokemon);
 
-  console.log(pokemon);
   return (
     <Container component="main">
-      <Typography>{`${capitalizeFirstLetter(pokemon?.name)} n°${String(
-        pokemon?.number
-      ).padStart(3, "0")}`}</Typography>
-      <CardMedia
-        sx={{ height: 220, width: 220 }}
-        image={pokemon?.image}
-        title={pokemon?.name}
-      />
-      <Button variant="contained">
-        <Link to="/pokemonList">Back to Pokemon List</Link>
+      <Grid container padding="2rem" spacing={2}>
+        <Grid
+          item
+          style={{ display: "flex", justifyContent: "center" }}
+          xs={12}
+          sm={6}
+        >
+          <CardMedia
+            sx={{ height: 220, width: 220 }}
+            image={pokemon?.image}
+            title={pokemon?.name}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography component="h5" variant="h5">{`${capitalizeFirstLetter(
+            pokemon?.name
+          )} n°${String(pokemon?.number).padStart(3, "0")}`}</Typography>
+          <Typography>{`Height : ${
+            pokemon ? pokemon?.height / 10 : ""
+          } m`}</Typography>
+          <Typography>{`Weight : ${
+            pokemon ? pokemon?.weight / 10 : ""
+          } kg`}</Typography>
+          {pokemon?.type.length === 1 && (
+            <Typography>{`Type : ${capitalizeFirstLetter(
+              pokemon?.type[0]
+            )}`}</Typography>
+          )}{" "}
+          {pokemon?.type.length === 2 && (
+            <Typography>{`Type : ${capitalizeFirstLetter(
+              pokemon?.type[0]
+            )} & ${capitalizeFirstLetter(pokemon?.type[1])}`}</Typography>
+          )}
+          {pokemon?.stats.map((stat) => (
+            <Typography
+              key={stat.stat.name}
+            >{`${stat.stat.name} : ${stat.base_stat}`}</Typography>
+          ))}
+        </Grid>
+      </Grid>
+      <Button sx={{ marginBottom: "2rem" }} variant="contained">
+        <Link
+          style={{ textDecoration: "none", color: "inherit", display: "flex" }}
+          to="/pokemonList"
+        >
+          <CatchingPokemonIcon
+            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+          />
+          Pokemon List
+        </Link>
       </Button>
     </Container>
   );

@@ -1,5 +1,5 @@
 import { SAVE_POKEMON_LIST, SAVE_POKEMON } from "../actions/pokemonActions";
-import { Pokemon } from "../../utils/types";
+import { Pokemon, PokemonInfos } from "../../utils/types";
 
 export const initialState = {
   pokemonList: [],
@@ -8,7 +8,11 @@ export const initialState = {
 
 const reducer = (
   state = initialState,
-  action: { type: string; pokemonList: Pokemon[]; currentPokemon?: Pokemon } = {
+  action: {
+    type: string;
+    pokemonList: Pokemon[];
+    currentPokemon?: PokemonInfos;
+  } = {
     type: "",
     pokemonList: [],
   }

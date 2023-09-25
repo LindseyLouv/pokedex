@@ -5,15 +5,15 @@ import {
   GET_POKEMON,
   savePokemon,
 } from "../actions/pokemonActions";
-import { Dispatch, Middleware } from "redux";
-import RootReducer, { RootState } from "../reducers/rootReducer"; // Import the root state type
+import { Middleware } from "redux";
+import { RootState } from "../reducers/rootReducer";
 
 const pokemonMiddleware: Middleware<{}, RootState> =
   (store) => (next) => (action) => {
     switch (action.type) {
       case GET_POKEMON_LIST:
         axios
-          .get(`http://localhost:3030/pokemon`)
+          .get(`http://localhost:3030/pokemon/all`)
           .then((response) => {
             store.dispatch(savePokemonList(response.data));
           })
