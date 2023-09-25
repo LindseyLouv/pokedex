@@ -48,9 +48,9 @@ function PokemonDetail() {
             )} & ${capitalizeFirstLetter(pokemon?.type[1])}`}</Typography>
           )}
           {pokemon?.stats.map((stat) => (
-            <Typography
-              key={stat.stat.name}
-            >{`${stat.stat.name} : ${stat.base_stat}`}</Typography>
+            <Typography key={stat.stat.name}>{`${capitalizeFirstLetter(
+              stat.stat.name
+            )} : ${stat.base_stat}`}</Typography>
           ))}
         </Grid>
       </Grid>
@@ -59,9 +59,7 @@ function PokemonDetail() {
           style={{ textDecoration: "none", color: "inherit", display: "flex" }}
           to="/pokemonList"
         >
-          <CatchingPokemonIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
+          <CatchingPokemonIcon sx={{ mr: 1 }} />
           Pokemon List
         </Link>
       </Button>

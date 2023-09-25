@@ -16,15 +16,22 @@ function App() {
   const dispatch = useDispatch();
   const url = useLocation();
 
-  // triggers when the website first load to get Pokémon list
-  useEffect(() => {
-    dispatch(getPokemonList());
-  }, []);
-
   // triggers when the url changes thanks to the useLocation Hook, everytime the url changes it triggers an event
   useEffect(() => {
+    // gets Kanto Pokémon data
+    if (url.pathname === "/pokemon/kanto") {
+      dispatch(getPokemonList("kanto"));
+    }
+    // gets Johto Pokémon data
+    else if (url.pathname === "/pokemon/johto") {
+      dispatch(getPokemonList("johto"));
+    }
+    // gets Hoenn Pokémon data
+    else if (url.pathname === "/pokemon/hoenn") {
+      dispatch(getPokemonList("hoenn"));
+    }
     // gets single Pokémon data for Pokémon page detail
-    if (url.pathname.slice(0, 9) === "/pokemon/") {
+    else if (url.pathname.slice(0, 9) === "/pokemon/") {
       dispatch(getPokemon(parseInt(url.pathname.replace("/pokemon/", ""))));
     }
     window.scrollTo(0, 0);
@@ -35,7 +42,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/pokemonlist" element={<PokemonList />} />
+        <Route path="/pokemon/kanto" element={<PokemonList />} />
+        <Route path="/pokemon/johto" element={<PokemonList />} />
+        <Route path="/pokemon/hoenn" element={<PokemonList />} />
         <Route path="/pokemon/:number" element={<PokemonDetail />} />
       </Routes>
       <Footer />

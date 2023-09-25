@@ -13,16 +13,16 @@ import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 
 const pages = [
   {
-    name: "1st Gen",
-    route: "/pokemonlist",
+    name: "Kanto (001-151)",
+    route: "/pokemon/kanto",
   },
   {
-    name: "2nd Gen",
-    route: "/pokemonlist",
+    name: "Johto (152-251)",
+    route: "/pokemon/johto",
   },
   {
-    name: "3rd Gen",
-    route: "/pokemonlist",
+    name: "Hoenn (252-386)",
+    route: "/pokemon/hoenn",
   },
 ];
 
