@@ -6,8 +6,8 @@ const rootReducer = combineReducers({
 });
 
 export type RootState = {
-    pokemon: typeof initialState;
-    // Add other reducer states here if you have more reducers
-  };
+  pokemon: typeof initialState;
+  // Add other reducer states here if you have more reducers
+};
 
 export default rootReducer;
