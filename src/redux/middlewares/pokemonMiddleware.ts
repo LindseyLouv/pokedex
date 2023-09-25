@@ -13,7 +13,7 @@ const pokemonMiddleware: Middleware<{}, RootState> =
     switch (action.type) {
       case GET_POKEMON_LIST:
         axios
-          .get(`http://localhost:3030/pokemon`)
+          .get(`http://localhost:3030/pokemon/all`)
           .then((response) => {
             store.dispatch(savePokemonList(response.data));
           })
