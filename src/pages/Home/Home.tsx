@@ -1,5 +1,6 @@
 import { Typography, Container, CardMedia } from "@mui/material";
 import pokedex from "./images/pokedex.png";
+import Link from "@mui/material/Link";
 
 function Home() {
   console.log("Image Path:", "/assets/images/pokedex.png");
@@ -25,6 +26,33 @@ function Home() {
           objectFit: "contain",
         }}
       />
+      <Container
+        component="div"
+        sx={{
+          display: "flex",
+          flexDirection: ["column", "row"],
+          justifyContent: "space-evenly",
+          paddingTop: "1rem",
+          color: (theme) => theme.palette.primary.main,
+        }}
+      >
+        <Link
+          href="https://github.com/LindseyLouv/pokedex-frontend"
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          GitHub Front-End Repository
+        </Link>
+        <Link
+          href="https://github.com/LindseyLouv/pokedex-backend"
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          GitHub Back-End Repository
+        </Link>
+      </Container>
     </Container>
   );
 }
