@@ -42,9 +42,18 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/pokemon/kanto" element={<PokemonList />} />
-        <Route path="/pokemon/johto" element={<PokemonList />} />
-        <Route path="/pokemon/hoenn" element={<PokemonList />} />
+        <Route
+          path="/pokemon/kanto"
+          element={<PokemonList pageName="Kanto Region Pokémon" />}
+        />
+        <Route
+          path="/pokemon/johto"
+          element={<PokemonList pageName="Johto Region Pokémon" />}
+        />
+        <Route
+          path="/pokemon/hoenn"
+          element={<PokemonList pageName="Hoenn Region Pokémon" />}
+        />
         <Route path="/pokemon/:number" element={<PokemonDetail />} />
       </Routes>
       <Footer />

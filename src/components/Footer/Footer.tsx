@@ -1,5 +1,6 @@
 import { Typography, Container } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import Link from "@mui/material/Link";
 
 function Footer() {
   return (
@@ -18,14 +19,14 @@ function Footer() {
     >
       <Typography>Lindsey Louv</Typography>
       <Typography>September 2023</Typography>
-      <a
+      <Link
         href="https://github.com/LindseyLouv"
         target="_blank"
         rel="noreferrer"
         style={{ textDecoration: "none", color: "inherit" }}
       >
         <GitHubIcon />
-      </a>
+      </Link>
     </Container>
   );
 }
