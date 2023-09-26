@@ -61,7 +61,7 @@ function PokemonDetail() {
         variant="contained"
       >
         <CatchingPokemonIcon sx={{ mr: 1 }} />
-        Pokemon List
+        Pokémon List
       </Button>
     </Container>
   );

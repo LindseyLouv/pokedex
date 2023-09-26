@@ -4,7 +4,11 @@ import { RootState } from "../../redux/reducers/rootReducer";
 import { Pokemon } from "../../utils/types";
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
 
-function PokemonList() {
+interface PokemonListProps {
+  pageName: string;
+}
+
+function PokemonList({ pageName }: PokemonListProps) {
   const pokemonList = useSelector(
     (state: RootState) => state.pokemon.pokemonList
   );
@@ -19,7 +23,7 @@ function PokemonList() {
           padding: "1rem",
         }}
       >
-        Pokemon List
+        {pageName}
       </Typography>
       <Grid container spacing={2}>
         {pokemonList.map((pokemon: Pokemon) => (
