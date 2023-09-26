@@ -1,5 +1,5 @@
 import { Typography, Container, Button, CardMedia, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducer";
 import { PokemonInfos } from "../../utils/types";
@@ -11,6 +11,7 @@ function PokemonDetail() {
     RootState,
     PokemonInfos | null
   >((state) => state.pokemon.currentPokemon);
+  const navigate = useNavigate();
 
   return (
     <Container component="main">
@@ -54,14 +55,13 @@ function PokemonDetail() {
           ))}
         </Grid>
       </Grid>
-      <Button sx={{ marginBottom: "2rem" }} variant="contained">
-        <Link
-          style={{ textDecoration: "none", color: "inherit", display: "flex" }}
-          to="/pokemonList"
-        >
-          <CatchingPokemonIcon sx={{ mr: 1 }} />
-          Pokemon List
-        </Link>
+      <Button
+        onClick={() => navigate(-1)}
+        sx={{ marginBottom: "2rem" }}
+        variant="contained"
+      >
+        <CatchingPokemonIcon sx={{ mr: 1 }} />
+        Pokemon List
       </Button>
     </Container>
   );
