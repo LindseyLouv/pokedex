@@ -27,7 +27,12 @@ export default function PokemonCard({ number, name, image }: PokemonCardProps) {
             title={name}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              color={(theme) => theme.palette.primary.main}
+            >
               {`#${number} ${capitalizeFirstLetter(name)}`}
             </Typography>
           </CardContent>

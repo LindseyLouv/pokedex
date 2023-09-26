@@ -1,10 +1,11 @@
-import { Typography, Container, Button, CardMedia, Grid } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Container, Button, CardMedia, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducer";
 import { PokemonInfos } from "../../utils/types";
-import { capitalizeFirstLetter } from "../../utils/functions";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
+import PokemonDetailCard from "../../components/PokemonDetailCard/PokemonDetailCard";
+import PokemonStatsCard from "../../components/PokemonStatsCard/PokemonStatsCard";
 
 function PokemonDetail() {
   const pokemon: PokemonInfos | null = useSelector<
@@ -18,7 +19,11 @@ function PokemonDetail() {
       <Grid container padding="2rem" spacing={2}>
         <Grid
           item
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
           xs={12}
           sm={6}
         >
@@ -29,32 +34,16 @@ function PokemonDetail() {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Typography component="h5" variant="h5">{`${capitalizeFirstLetter(
-            pokemon?.name
-          )} n°${String(pokemon?.number).padStart(3, "0")}`}</Typography>
-          <Typography>{`Height : ${
-            pokemon ? pokemon?.height / 10 : ""
-          } m`}</Typography>
-          <Typography>{`Weight : ${
-            pokemon ? pokemon?.weight / 10 : ""
-          } kg`}</Typography>
-          {pokemon?.type.length === 1 && (
-            <Typography>{`Type : ${capitalizeFirstLetter(
-              pokemon?.type[0]
-            )}`}</Typography>
-          )}{" "}
-          {pokemon?.type.length === 2 && (
-            <Typography>{`Type : ${capitalizeFirstLetter(
-              pokemon?.type[0]
-            )} & ${capitalizeFirstLetter(pokemon?.type[1])}`}</Typography>
-          )}
-          {pokemon?.stats.map((stat) => (
-            <Typography key={stat.stat.name}>{`${capitalizeFirstLetter(
-              stat.stat.name
-            )} : ${stat.base_stat}`}</Typography>
-          ))}
+          <PokemonDetailCard
+            number={pokemon?.number}
+            name={pokemon?.name}
+            height={pokemon?.height}
+            weight={pokemon?.weight}
+            type={pokemon?.type}
+          ></PokemonDetailCard>
         </Grid>
       </Grid>
+      <PokemonStatsCard stats={pokemon?.stats}></PokemonStatsCard>
       <Button
         onClick={() => navigate(-1)}
         sx={{ marginBottom: "2rem" }}
